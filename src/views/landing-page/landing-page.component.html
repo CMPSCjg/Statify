@@ -1,18 +1,27 @@
-<div class="container" role="main">
+<div class="container landing" role="main">
     <!-- <h1>Music Visulation</h1>
     <h2>Visulation your music tastes!</h2>
     <button type="button" (click)="loginToSpotify()">Login to Spotify</button>
 
     <p>A Spike Lee Joint</p> -->
     <div class="row">
-        <div class="col-6">
+        <div class="col-lg-6 col-sm-12 d-flex justify-content-center">
             <div class="white-box">
                 <img src="../../assets/img/stats.png" />
                 <h1>Statify</h1>
             </div>
+        </div>
+        <div class="col-lg-6 col-sm-12 d-flex justify-content-center">
             <div class="white-box">
-                <p></p>
+                <p>A web application for aggregating Spotify data to provide stunning and in-depth visualizations.
+                </p>
             </div>
+        </div>
+    </div>
+
+    <div class="row pt-5">
+        <div class="col-12 d-flex justify-content-center">
+            <button type="button" (click)="loginToSpotify()" class="login-btn">Login with Spotify</button>
         </div>
     </div>
 

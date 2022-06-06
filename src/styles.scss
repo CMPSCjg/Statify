@@ -1,1 +1,103 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+body {
+    background-color: rgba(0, 0, 0, 0.77);
+}
+
+.landing {
+    padding-top: 15%;
+}
+
+.white-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    background-color: #fff;
+    border-radius: 39px;
+    width: 490px;
+    height: 180px;
+    margin-bottom: 20px;
+    padding: 45px;
+}
+
+.white-box h1 {
+    color: #00171F;
+    font-family: Lato;
+    font-weight: bold;
+    font-size: 90px;
+    line-height: 117px;
+    width: 324px;
+    text-align: left;
+}
+
+.white-box img {
+    width: 99px;
+    height: 99px;
+    margin-right: 20px;
+}
+
+.white-box p {
+    color: #00171F;
+    font-family: Lato;
+    font-weight: bold;
+    font-size: 27px;
+    line-height: 37px;
+    width: 459px;
+    text-align: left;
+}
+
+.login-btn {
+    background-color: #1DB954;
+    border-radius: 31px;
+    border-color: transparent;
+    width: 351px;
+    height: 87px;
+    color: #00171F;
+    font-family: Lato;
+    font-weight: bold;
+    font-size: 33px;
+    line-height: 42px;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.login-btn:hover {
+    background-color: #218845;
+    transition: 0.2s;
+}
+
+@media (max-width: 992px) {
+    .landing {
+        padding-top: 12%;
+    }
+}
+
+@media (max-width: 465px) {
+    .white-box {
+        width: 300px;
+    }
+
+    .white-box h1 {
+        font-size: 49px;
+        margin-right: -12px;
+    }
+
+    .white-box img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .white-box p {
+        font-size: 22px;
+        line-height: 28px;
+        margin-bottom: 0px;
+    }
+
+    .login-btn {
+        width: 320px;
+        font-size: 28px;
+    }
+}
