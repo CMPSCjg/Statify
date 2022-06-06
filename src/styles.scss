@@ -14,13 +14,14 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
     background-color: #fff;
     border-radius: 39px;
     width: 490px;
     height: 180px;
     margin-bottom: 20px;
-    padding: 45px;
+    -webkit-box-shadow: 5px 5px 37px 5px rgba(0, 0, 0, 0.49);
+    box-shadow: 5px 5px 37px 5px rgba(0, 0, 0, 0.49);
 }
 
 .white-box h1 {
@@ -29,7 +30,6 @@ body {
     font-weight: bold;
     font-size: 90px;
     line-height: 117px;
-    width: 324px;
     text-align: left;
 }
 
@@ -46,7 +46,7 @@ body {
     font-size: 27px;
     line-height: 37px;
     width: 459px;
-    text-align: left;
+    text-align: center;
 }
 
 .login-btn {
@@ -62,11 +62,17 @@ body {
     line-height: 42px;
     text-align: center;
     transition: 0.2s;
+    -webkit-box-shadow: 5px 5px 37px 5px rgba(0, 0, 0, 0.49);
+    box-shadow: 5px 5px 37px 5px rgba(0, 0, 0, 0.49);
 }
 
 .login-btn:hover {
     background-color: #218845;
     transition: 0.2s;
+}
+
+.btn-container {
+    padding-top: 3rem;
 }
 
 @media (max-width: 992px) {
@@ -78,6 +84,7 @@ body {
 @media (max-width: 465px) {
     .white-box {
         width: 300px;
+        height: 150px;
     }
 
     .white-box h1 {
@@ -91,13 +98,18 @@ body {
     }
 
     .white-box p {
-        font-size: 22px;
-        line-height: 28px;
+        font-size: 19px;
+        line-height: 25px;
         margin-bottom: 0px;
+        padding: 0 20px;
     }
 
     .login-btn {
         width: 320px;
         font-size: 28px;
+    }
+    
+    .btn-container {
+        padding-top: 1rem;
     }
 }
