@@ -1,5 +1,7 @@
 <h1>Results page</h1>
-
-<div>
-  <img *ngFor="let image of images; index as i" src="{{ image }}" />
+<div class="row justify-content-center" style="transition: 0.5s;">
+  <div *ngFor="let image of images; index as i" class="col-2 artist-box">
+      <img src="{{ image }}" class="artist-img" />
+      <h2 class="artist-title">{{ name[i] }}</h2>
+  </div>
 </div>

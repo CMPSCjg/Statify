@@ -6,6 +6,20 @@ body {
     background-color: rgba(0, 0, 0, 0.77);
 }
 
+body {
+    animation: fadeInAnimation ease 2s;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 .landing {
     padding-top: 15%;
 }
@@ -67,12 +81,41 @@ body {
 }
 
 .login-btn:hover {
-    background-color: #218845;
+    background-color: #26f56f;
+    color: #000;
+    transform: scale(1.2);
     transition: 0.2s;
 }
 
 .btn-container {
     padding-top: 3rem;
+}
+
+.artist-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 39px;
+    margin: 20px;
+    padding: 24px;
+    width: 262px;
+    height: 295px;
+    -webkit-box-shadow: 5px 5px 37px 5px rgba(0, 0, 0, 0.49);
+    box-shadow: 5px 5px 37px 5px rgba(0, 0, 0, 0.49);
+}
+
+.artist-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+}
+
+.artist-title {
+    font-size: 25px;
+    font-weight: bold;
+    padding-top: 12px;
 }
 
 @media (max-width: 992px) {
@@ -105,10 +148,10 @@ body {
     }
 
     .login-btn {
-        width: 320px;
+        width: 268px;
         font-size: 28px;
     }
-    
+
     .btn-container {
         padding-top: 1rem;
     }
