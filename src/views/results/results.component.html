@@ -1,5 +1,5 @@
 <h1>Results page</h1>
 
 <div>
-    {{ topArtists | json }}
+  <img *ngFor="let image of images; index as i" src="{{ image }}" />
 </div>
