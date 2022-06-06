@@ -3,18 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LandingPageComponent } from '../views/landing-page/landing-page.component';
+import * as fromViews from '../views/index'
+
+import { SpotifyService } from 'src/services/spotify.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingPageComponent
+    fromViews.views
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [SpotifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
