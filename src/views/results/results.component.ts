@@ -14,9 +14,13 @@ import { retrieveAccessToken } from 'src/helpers/retrieve-access-token';
 export class ResultsComponent implements OnInit {
   accessToken: any = '';
   topArtists: TopArtists[] = [];
-  topTracks: TopTracks[] = [];
-  images: string[] = [];
-  name: string[] = [];
+  topTracks: TopTracks = {items: []};
+
+  artistImages: string[] = [];
+  artistName: string[] = [];
+
+  trackImages: string[] = [];
+  trackName: string[] = [];
 
   constructor(
     private cookieSvc: CookieService,
@@ -45,12 +49,14 @@ export class ResultsComponent implements OnInit {
 
     this.spotifySvc.getTopArtists(this.accessToken).then((data) => {
       this.topArtists = data;
-      this.images = this.topArtists.map((topArtist) => topArtist.images[0].url);
-      this.name = this.topArtists.map((topArtists) => topArtists.name);
+      this.artistImages = this.topArtists.map((topArtist) => topArtist.images[0].url);
+      this.artistName = this.topArtists.map((topArtists) => topArtists.name);
     });
 
     this.spotifySvc.getTopTracks(this.accessToken).then((data) => {
       this.topTracks = data;
+      this.trackImages = this.topTracks.items.map((topTracks) => topTracks.album.images[0].url);
+      this.trackName = this.topTracks.items.map((topTracks) => topTracks.album.name)
     });
   }
 }

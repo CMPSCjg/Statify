@@ -18,13 +18,13 @@ export class SpotifyService {
     return Promise.resolve(topArtists);
   }
   
-  async getTopTracks(accessToken: string): Promise<TopTracks[]> {
+  async getTopTracks(accessToken: string): Promise<TopTracks> {
     const headers = {
       Authorization: 'Bearer ' + accessToken,
     };
-    const topTracks: TopTracks[] = await axios.default
+    const topTracks: TopTracks = await axios.default
       .get('https://api.spotify.com/v1/me/top/tracks', { headers })
-      .then((response) => response.data.items);
+      .then((response) => response.data);
 
     return Promise.resolve(topTracks);
   }

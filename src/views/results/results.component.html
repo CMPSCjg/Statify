@@ -1,7 +1,16 @@
 <h1>Results page</h1>
-<div class="row justify-content-center" style="transition: 0.5s;">
-  <div *ngFor="let image of images; index as i" class="col-2 artist-box">
-      <img src="{{ image }}" class="artist-img" />
-      <h2 class="artist-title">{{ name[i] }}</h2>
+
+
+<div class="row justify-content-center" style="transition: 0.5s">
+  <h1>Top Artists</h1>
+  <div *ngFor="let image of artistImages; index as i" class="col-2 artist-box">
+    <img src="{{ image }}" class="artist-img" />
+    <h2 class="artist-title">{{ artistName[i] }}</h2>
+  </div>
+  <h1>Top Tracks</h1>
+  <div *ngFor="let image of trackImages; index as i" class="col-2 artist-box">
+    <img src="{{ image }}" class="artist-img" />
+    <h2 class="artist-title">{{ trackName[i] }}</h2>
   </div>
 </div>
+
