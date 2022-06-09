@@ -6,11 +6,14 @@ import { TopTracks } from 'src/models/TopTracks';
 import { SpotifyService } from 'src/services/spotify.service';
 import { retrieveAccessToken } from 'src/helpers/retrieve-access-token';
 
+import { ResultsHeaderComponent } from 'src/components/results-header/results-header.component';
+
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.scss'],
 })
+
 export class ResultsComponent implements OnInit {
   accessToken: any = '';
   topArtists: TopArtists[] = [];
