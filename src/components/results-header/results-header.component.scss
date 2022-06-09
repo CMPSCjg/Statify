@@ -1,12 +1,12 @@
 .results-header {
-  background: linear-gradient(
-    332deg,
-    rgba(36, 36, 36, 1) 8%,
-    rgb(240 212 76 / 49%) 100%
-  );
   padding-bottom: 25px;
   font-family: Lato;
   color: white;
+  animation-name: backgroundColorPalette;
+  animation-duration: 25s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  background: linear-gradient(332deg, rgba(36, 36, 36, 1) 8%, transparent 100%);
 }
 
 .logo-title {
@@ -112,5 +112,23 @@
 
   .logo-container {
     justify-content: center;
+  }
+}
+
+@keyframes backgroundColorPalette {
+  0% {
+    background-color: rgb(255 190 11 / 49%);
+  }
+  25% {
+    background-color: rgb(251 86 7 / 49%);
+  }
+  50% {
+    background-color: rgb(255 0 110 /49%);
+  }
+  75% {
+    background-color: rgb(131 56 236 / 49%);
+  }
+  100% {
+    background-color: rgb(58 134 255 / 49%);
   }
 }
