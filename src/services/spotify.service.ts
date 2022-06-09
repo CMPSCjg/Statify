@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as axios from 'axios';
 import { TopArtists } from 'src/models/TopArtists';
 import { TopTracks } from 'src/models/TopTracks';
+import { UserProfile } from 'src/models/UserProfile';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,7 @@ export class SpotifyService {
 
     return Promise.resolve(topArtists);
   }
-  
+
   async getTopTracks(accessToken: string): Promise<TopTracks> {
     const headers = {
       Authorization: 'Bearer ' + accessToken,
@@ -27,5 +28,16 @@ export class SpotifyService {
       .then((response) => response.data);
 
     return Promise.resolve(topTracks);
+  }
+
+  async getUserProfile(accessToken: string): Promise<UserProfile> {
+    const headers = {
+      Authorization: 'Bearer ' + accessToken,
+    };
+    const userProfile: UserProfile = await axios.default
+      .get('https://api.spotify.com/v1/me', { headers })
+      .then((response) => response.data);
+
+    return Promise.resolve(userProfile);
   }
 }

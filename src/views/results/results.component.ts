@@ -6,24 +6,25 @@ import { TopTracks } from 'src/models/TopTracks';
 import { SpotifyService } from 'src/services/spotify.service';
 import { retrieveAccessToken } from 'src/helpers/retrieve-access-token';
 
-import { ResultsHeaderComponent } from 'src/components/results-header/results-header.component';
+import { UserProfile } from 'src/models/UserProfile';
 
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.scss'],
 })
-
 export class ResultsComponent implements OnInit {
   accessToken: any = '';
   topArtists: TopArtists[] = [];
-  topTracks: TopTracks = {items: []};
+  topTracks: TopTracks = { items: [] };
 
   artistImages: string[] = [];
   artistName: string[] = [];
 
   trackImages: string[] = [];
   trackName: string[] = [];
+
+  userProfile: UserProfile;
 
   constructor(
     private cookieSvc: CookieService,
@@ -52,14 +53,24 @@ export class ResultsComponent implements OnInit {
 
     this.spotifySvc.getTopArtists(this.accessToken).then((data) => {
       this.topArtists = data;
-      this.artistImages = this.topArtists.map((topArtist) => topArtist.images[0].url);
+      this.artistImages = this.topArtists.map(
+        (topArtist) => topArtist.images[0].url
+      );
       this.artistName = this.topArtists.map((topArtists) => topArtists.name);
     });
 
     this.spotifySvc.getTopTracks(this.accessToken).then((data) => {
       this.topTracks = data;
-      this.trackImages = this.topTracks.items.map((topTracks) => topTracks.album.images[0].url);
-      this.trackName = this.topTracks.items.map((topTracks) => topTracks.album.name)
+      this.trackImages = this.topTracks.items.map(
+        (topTracks) => topTracks.album.images[0].url
+      );
+      this.trackName = this.topTracks.items.map(
+        (topTracks) => topTracks.album.name
+      );
+    });
+
+    this.spotifySvc.getUserProfile(this.accessToken).then((data) => {
+      this.userProfile = data;
     });
   }
 }

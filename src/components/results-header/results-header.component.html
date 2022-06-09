@@ -1,17 +1,19 @@
 <div class="results-header container-fluid">
-    <div class="logo-container">
-        <a href="/">
-            <img src="../../assets/img/stats-white.png" class="header-logo" />
-            <p class="logo-title">Statify</p>
-        </a>
+  <div class="logo-container">
+    <a href="/">
+      <img src="../../assets/img/stats-white.png" class="header-logo" />
+      <p class="logo-title">Statify</p>
+    </a>
+  </div>
+  <div class="user-info-container">
+    <img src="{{ userProfile.images[0].url }}" class="user-pic" />
+    <div class="user-info">
+      <p class="user-name" [innerHTML]="userProfile.display_name"></p>
+      <p class="user-date">
+        TODO Need to figure out API way to do this... maybe screen scraping?
+      </p>
+      <p class="user-followers">{{ userProfile.followers.total }} followers</p>
     </div>
-    <div class="user-info-container">
-        <img src="../../assets/img/user-pic.png" class="user-pic" />
-        <div class="user-info">
-            <p class="user-name">Dallas Yatsinko</p>
-            <p class="user-date">Member since: 2016</p>
-            <p class="user-followers">Following 276</p>
-        </div>
-        <button class="share-btn"><img src="../../assets/img/share.png" /></button>
-    </div>
+    <button class="share-btn"><img src="../../assets/img/share.png" /></button>
+  </div>
 </div>
