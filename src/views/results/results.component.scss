@@ -1,0 +1,39 @@
+.artist-header {
+  font-family: Lato;
+  font-weight: bold;
+  font-size: 68px;
+  border-bottom: 2px solid #1db954;
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.artist-bar {
+  margin-top: 2px;
+  margin-bottom: 0px;
+  font-size: 36px;
+  font-family: Lato;
+  font-weight: bold;
+  color: white;
+  height: 20vh;
+
+  .artist-position {
+    background-color: #1db954;
+    text-align: center;
+    -webkit-box-shadow: 5px 5px 37px 5px rgba(0, 0, 0, 0.49);
+    box-shadow: 5px 5px 37px 5px rgba(0, 0, 0, 0.49);
+  }
+
+  .artist-information {
+    text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
+    margin-bottom: 0;
+    background-repeat: no-repeat;
+    background-position-y: -50vh;
+    background-size: cover;
+    -webkit-box-shadow: 5px 5px 37px 5px rgba(0, 0, 0, 0.49);
+    box-shadow: 5px 5px 37px 5px rgba(0, 0, 0, 0.49);
+
+    @media screen and (max-width: 768px) {
+      background-position-y: -25vh;
+    }
+  }
+}
