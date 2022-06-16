@@ -17,7 +17,9 @@ export class ResultsComponent implements OnInit {
   accessToken: any = '';
   topArtists: TopArtists[] = [];
   topTracks: TopTracks = { items: [] };
-
+  genres: string[] = [];
+  genreCountsMap = new Map<string, number>();
+  genreCounts: object;
   artistImages: string[] = [];
   artistName: string[] = [];
 
@@ -57,6 +59,26 @@ export class ResultsComponent implements OnInit {
         (topArtist) => topArtist.images[0].url
       );
       this.artistName = this.topArtists.map((topArtists) => topArtists.name);
+
+      this.topArtists.map((topArtist) =>
+        topArtist.genres.forEach((genre) => {
+          this.genres.push(genre);
+        })
+      );
+
+      for (const genre of this.genres) {
+        this.genreCountsMap.set(genre, Number(this.genreCountsMap.get(genre)));
+
+        if (this.genreCountsMap.get(genre)) {
+          this.genreCountsMap.set(
+            genre,
+            Number(this.genreCountsMap.get(genre)) + 1
+          );
+        } else {
+          this.genreCountsMap.set(genre, 1);
+        }
+      }
+      this.genreCounts = Object.fromEntries(this.genreCountsMap);
     });
 
     this.spotifySvc.getTopTracks(this.accessToken).then((data) => {

@@ -6,14 +6,17 @@
     </a>
   </div>
   <div class="user-info-container">
-    <img src="{{ userProfile.images[0].url }}" class="user-pic" />
+    <img src="../../assets/img/stats-white.png" class="user-pic" />
     <div class="user-info">
-      <p class="user-name" [innerHTML]="userProfile.display_name"></p>
-      <p class="user-date">
-        TODO Need to figure out API way to do this... maybe screen scraping?
-      </p>
-      <p class="user-followers">{{ userProfile.followers.total }} followers</p>
+      <p class="user-name">Statify</p>
+      <p class="user-date">Here's what we found for your account!</p>
+      <!-- <p class="user-followers">{{ userProfile.followers.total }} followers</p> -->
     </div>
-    <button class="share-btn"><img src="../../assets/img/share.png" /></button>
+    <button class="share-btn" aria-label="Button to share Statify report.">
+      <img
+        src="../../assets/img/share.png"
+        alt="Button to share Statify report."
+      />
+    </button>
   </div>
 </div>
