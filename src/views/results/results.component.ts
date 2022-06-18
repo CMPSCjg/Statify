@@ -54,6 +54,10 @@ export class ResultsComponent implements OnInit {
     }
 
     this.spotifySvc.getTopArtists(this.accessToken).then((data) => {
+      if (!data) {
+        return;
+      }
+
       this.topArtists = data;
       this.artistImages = this.topArtists.map(
         (topArtist) => topArtist.images[0].url
@@ -82,16 +86,22 @@ export class ResultsComponent implements OnInit {
     });
 
     this.spotifySvc.getTopTracks(this.accessToken).then((data) => {
+      if (!data) {
+        return;
+      }
+
       this.topTracks = data;
       this.trackImages = this.topTracks.items.map(
         (topTracks) => topTracks.album.images[0].url
       );
-      this.trackName = this.topTracks.items.map(
-        (topTracks) => topTracks.album.name
-      );
+      this.trackName = this.topTracks.items.map((topTracks) => topTracks.name);
     });
 
     this.spotifySvc.getUserProfile(this.accessToken).then((data) => {
+      if (!data) {
+        return;
+      }
+
       this.userProfile = data;
     });
   }

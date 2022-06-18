@@ -18,10 +18,15 @@ export interface Images {
 // }
 
 export interface Album {
-  images: Array<Images>
-  name: string
+  images: Array<Images>;
+  name: string;
 }
 
-export interface Track {   album: Album }
+export interface Track {
+  album: Album;
+  name: string;
+}
 
-export interface TopTracks {   items: Array<Track> }
+export interface TopTracks {
+  items: Array<Track>;
+}
