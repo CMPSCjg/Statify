@@ -49,6 +49,7 @@ export class SpotifyService {
   }
 
   async getUserProfile(accessToken: string): Promise<UserProfile> {
+    return Promise.resolve(null);
     const headers = {
       Authorization: 'Bearer ' + accessToken,
     };
@@ -61,7 +62,7 @@ export class SpotifyService {
 
       return Promise.resolve(userProfile);
     } catch (error) {
-      return Promise.resolve(null);
+      
     }
   }
 

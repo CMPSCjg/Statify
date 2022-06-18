@@ -1,63 +1,56 @@
 <div class="main-container">
   <app-results-header [userProfile]="userProfile"></app-results-header>
 
-  <div class="row" style="transition: 0.5s">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-      <h1 class="artist-header">Top Artists</h1>
-    </div>
-  </div>
-
-  <div *ngFor="let image of artistImages; index as i">
-    <div class="row artist-bar">
+  <div class="body-container">
+    <div class="row" style="transition: 0.5s">
       <div class="col-md-1"></div>
-      <span class="col-md-1 artist-position">{{ i + 1 }}</span>
-      <p
-        class="col-md-9 artist-information"
-        [ngStyle]="{
+      <div class="col-md-10">
+        <h1 class="artist-header">Top Artists</h1>
+      </div>
+    </div>
+
+    <div *ngFor="let image of artistImages; index as i">
+      <div class="row artist-bar">
+        <div class="col-md-1"></div>
+        <span class="col-md-1 artist-position">{{ i + 1 }}</span>
+        <p class="col-md-9 artist-information" [ngStyle]="{
           'background-image': 'url(' + image + ')'
-        }"
-      >
-        {{ artistName[i] }}
-      </p>
+        }">
+          {{ artistName[i] }}
+        </p>
+      </div>
     </div>
-  </div>
 
-  <div class="row" style="transition: 0.5s">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-      <h1 class="artist-header">Top Tracks</h1>
+    <div class="row" style="transition: 0.5s">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <h1 class="artist-header">Top Tracks</h1>
+      </div>
     </div>
-  </div>
 
-  <!-- <div class="row justify-content-center" style="transition: 0.5s">
+    <!-- <div class="row justify-content-center" style="transition: 0.5s">
     <div *ngFor="let image of trackImages; index as i" class="col-2 artist-box">
       <img src="{{ image }}" class="artist-img" />
       <h2 class="track-information">{{ trackName[i] }}</h2>
     </div>
   </div> -->
 
-  <div class="row justify-content-center" style="transition: 0.5s">
-    <div
-      *ngFor="let image of trackImages; index as i"
-      class="col-md-2 track-box"
-      [ngStyle]="{
+    <div class="row justify-content-center" style="transition: 0.5s">
+      <div *ngFor="let image of trackImages; index as i" class="col-md-2 track-box" [ngStyle]="{
         'background-image': 'url(' + image + ')',
         'background-size': 'cover'
-      }"
-    >
-      <div>
-        <h2 class="track-information">{{ trackName[i] }}</h2>
+      }">
+        <div>
+          <h2 class="track-information">{{ trackName[i] }}</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="transition: 0.5s">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <h1 class="artist-header">Top Genres</h1>
       </div>
     </div>
   </div>
-
-  <div class="row" style="transition: 0.5s">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-      <h1 class="artist-header">Top Genres</h1>
-    </div>
-  </div>
-
-  <canvas id="my_canvas"></canvas>
 </div>
