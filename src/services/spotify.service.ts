@@ -4,7 +4,6 @@ import * as axios from 'axios';
 import { CookieService } from 'ngx-cookie-service';
 import { TopArtists } from 'src/models/TopArtists';
 import { TopTracks } from 'src/models/TopTracks';
-import { UserProfile } from 'src/models/UserProfile';
 
 @Injectable({
   providedIn: 'root',
@@ -45,24 +44,6 @@ export class SpotifyService {
       return Promise.resolve(topTracks);
     } catch (error) {
       return Promise.resolve(null);
-    }
-  }
-
-  async getUserProfile(accessToken: string): Promise<UserProfile> {
-    return Promise.resolve(null);
-    const headers = {
-      Authorization: 'Bearer ' + accessToken,
-    };
-
-    try {
-      const userProfile: UserProfile = await axios.default
-        .get('https://api.spotify.com/v1/me', { headers })
-        .then((response) => response?.data)
-        .catch(() => this.handleError());
-
-      return Promise.resolve(userProfile);
-    } catch (error) {
-      
     }
   }
 

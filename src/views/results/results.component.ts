@@ -7,8 +7,6 @@ import { TopTracks } from 'src/models/TopTracks';
 import { SpotifyService } from 'src/services/spotify.service';
 import { retrieveAccessToken } from 'src/helpers/retrieve-access-token';
 
-import { UserProfile } from 'src/models/UserProfile';
-
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
@@ -28,8 +26,6 @@ export class ResultsComponent implements AfterViewInit {
 
   trackImages: string[] = [];
   trackName: string[] = [];
-
-  userProfile: UserProfile;
 
   constructor(
     private readonly cookieSvc: CookieService,
@@ -148,14 +144,6 @@ export class ResultsComponent implements AfterViewInit {
         (topTracks) => topTracks.album.images[0].url
       );
       this.trackName = this.topTracks.items.map((topTracks) => topTracks.name);
-    });
-
-    this.spotifySvc.getUserProfile(this.accessToken).then((data) => {
-      if (!data) {
-        return;
-      }
-
-      this.userProfile = data;
     });
   }
 }

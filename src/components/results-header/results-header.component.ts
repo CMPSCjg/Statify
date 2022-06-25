@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { UserProfile } from 'src/models/UserProfile';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-results-header',
@@ -7,8 +6,6 @@ import { UserProfile } from 'src/models/UserProfile';
   styleUrls: ['./results-header.component.scss'],
 })
 export class ResultsHeaderComponent implements OnInit {
-  @Input() userProfile: UserProfile;
-
   constructor() {}
 
   ngOnInit(): void {}
