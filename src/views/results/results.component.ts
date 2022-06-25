@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { Chart, ChartType, registerables } from 'chart.js';
 
 import { TopArtists } from 'src/models/TopArtists';
 import { TopTracks } from 'src/models/TopTracks';
@@ -13,13 +14,15 @@ import { UserProfile } from 'src/models/UserProfile';
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.scss'],
 })
-export class ResultsComponent implements OnInit {
+export class ResultsComponent implements AfterViewInit {
+  isLoading = true;
   accessToken: any = '';
   topArtists: TopArtists[] = [];
   topTracks: TopTracks = { items: [] };
   genres: string[] = [];
   genreCountsMap = new Map<string, number>();
   genreCounts: object;
+
   artistImages: string[] = [];
   artistName: string[] = [];
 
@@ -29,11 +32,16 @@ export class ResultsComponent implements OnInit {
   userProfile: UserProfile;
 
   constructor(
-    private cookieSvc: CookieService,
-    private spotifySvc: SpotifyService
-  ) {}
+    private readonly cookieSvc: CookieService,
+    private readonly spotifySvc: SpotifyService
+  ) {
+    this.genreCounts = null;
+    Chart.register(...registerables);
+  }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    this.isLoading = false;
+
     // Check that a valid access_token has not already been generated and stored as a cookie value.
     if (this.cookieSvc.check('STATIFY_ACCESS_TOKEN')) {
       this.accessToken = this.cookieSvc.get('STATIFY_ACCESS_TOKEN');
@@ -82,7 +90,52 @@ export class ResultsComponent implements OnInit {
           this.genreCountsMap.set(genre, 1);
         }
       }
+
       this.genreCounts = Object.fromEntries(this.genreCountsMap);
+      const arrayKeys = Object.keys(this.genreCounts);
+      const arrayValues = Object.values(this.genreCounts);
+      const pieChartRgbs = [];
+
+      for (let i = 0; i < arrayKeys.length; i++) {
+        let rgbString = 'rgb(';
+
+        // Generate random red, blue color
+        const r = (Math.random() * 256) | 0;
+        const g = (Math.random() * 256) | 0;
+        const b = (Math.random() * 256) | 0;
+        rgbString += '' + r + ', ' + g + ', ' + b;
+
+        rgbString += ')';
+        pieChartRgbs.push(rgbString);
+      }
+
+      const lineChartType: ChartType = 'pie';
+
+      const chartData = {
+        labels: arrayKeys,
+        datasets: [
+          {
+            label: 'Genre Popularity',
+            backgroundColor: pieChartRgbs,
+            hoverOffset: 4,
+            spacing: 5,
+            data: arrayValues,
+          },
+        ],
+      };
+
+      const config = {
+        type: lineChartType,
+        data: chartData,
+        options: {},
+      };
+
+      Chart.defaults.color = 'white';
+      Chart.defaults.font.size = 16;
+      const element: HTMLCanvasElement = document.getElementById(
+        'myChart'
+      ) as HTMLCanvasElement;
+      const myChart = new Chart(element, config);
     });
 
     this.spotifySvc.getTopTracks(this.accessToken).then((data) => {

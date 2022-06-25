@@ -4,13 +4,14 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import * as fromViews from '../views/index';
+import * as fromComponents from '../components/index';
 
 import { SpotifyService } from 'src/services/spotify.service';
-import { ResultsHeaderComponent } from '../components/results-header/results-header.component';
 
 @NgModule({
-  declarations: [AppComponent, fromViews.views, ResultsHeaderComponent],
+  declarations: [AppComponent, fromViews.views, fromComponents.components],
   imports: [BrowserModule, AppRoutingModule],
   providers: [CookieService, SpotifyService],
   bootstrap: [AppComponent],

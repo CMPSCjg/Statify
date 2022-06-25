@@ -1,4 +1,4 @@
-<div class="main-container">
+<div class="main-container" *ngIf="!isLoading; else loader">
   <app-results-header [userProfile]="userProfile"></app-results-header>
 
   <div class="body-container">
@@ -13,9 +13,12 @@
       <div class="row artist-bar">
         <div class="col-md-1"></div>
         <span class="col-md-1 artist-position">{{ i + 1 }}</span>
-        <p class="col-md-9 artist-information" [ngStyle]="{
-          'background-image': 'url(' + image + ')'
-        }">
+        <p
+          class="col-md-9 artist-information"
+          [ngStyle]="{
+            'background-image': 'url(' + image + ')'
+          }"
+        >
           {{ artistName[i] }}
         </p>
       </div>
@@ -28,19 +31,18 @@
       </div>
     </div>
 
-    <!-- <div class="row justify-content-center" style="transition: 0.5s">
-    <div *ngFor="let image of trackImages; index as i" class="col-2 artist-box">
-      <img src="{{ image }}" class="artist-img" />
-      <h2 class="track-information">{{ trackName[i] }}</h2>
-    </div>
-  </div> -->
-
     <div class="row justify-content-center" style="transition: 0.5s">
-      <div *ngFor="let image of trackImages; index as i" class="col-md-2 track-box" [ngStyle]="{
-        'background-image': 'url(' + image + ')',
-        'background-size': 'cover'
-      }">
-        <div>
+      <div
+        *ngFor="let image of trackImages; index as i"
+        class="col-md-2 track-box"
+        [ngStyle]="{
+          'background-image': 'url(' + image + ')',
+          'background-size': 'cover',
+          position: 'relative',
+          padding: 0
+        }"
+      >
+        <div style="position: absolute; bottom: -8px; width: 100%">
           <h2 class="track-information">{{ trackName[i] }}</h2>
         </div>
       </div>
@@ -52,5 +54,14 @@
         <h1 class="artist-header">Top Genres</h1>
       </div>
     </div>
+    <div class="row justify-content-center">
+      <div class="col-md-9">
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
   </div>
 </div>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
