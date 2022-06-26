@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import * as axios from 'axios';
 import { CookieService } from 'ngx-cookie-service';
 import { TopArtists } from 'src/models/TopArtists';
 import { TopTracks } from 'src/models/TopTracks';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -11,23 +14,19 @@ import { TopTracks } from 'src/models/TopTracks';
 export class SpotifyService {
   constructor(
     private readonly router: Router,
-    private readonly cookieSvc: CookieService
+    private readonly cookieSvc: CookieService,
+    private http: HttpClient
   ) {}
 
-  async getTopArtists(accessToken: string): Promise<TopArtists[]> {
+  getTopArtists(accessToken: string): Observable<TopArtists[]> {
     const headers = {
       Authorization: 'Bearer ' + accessToken,
     };
 
-    try {
-      const topArtists: TopArtists[] = await axios.default
-        .get('https://api.spotify.com/v1/me/top/artists', { headers })
-        .then((response) => response?.data?.items);
-
-      return Promise.resolve(topArtists);
-    } catch (error) {
-      return Promise.resolve(null);
-    }
+    const url = 'https://api.spotify.com/v1/me/top/artists';
+    return this.http
+      .get<TopArtists[]>(url, { headers })
+      .pipe(catchError((error) => throwError(error.message || error)));
   }
 
   async getTopTracks(accessToken: string): Promise<TopTracks> {
